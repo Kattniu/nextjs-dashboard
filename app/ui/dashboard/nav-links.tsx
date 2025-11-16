@@ -58,8 +58,8 @@ export default function NavLinks() {
             className={clsx(
               "flex h-[48px] grow items-center justify-center gap-2 rounded-md bg-gray-50 p-3 text-sm font-medium hover:bg-sky-100 hover:text-blue-600 md:flex-none md:justify-start md:p-2 md:px-3",
               {
-                "bg-sky-100 text-blue-600": pathname === link.href, // <-- marcar link activo
-              }
+                "bg-sky-100 text-blue-600": pathname === link.href, // <-- marcar link activo | Si el pathname actual es igual al href del link se aplican clases azules,
+              }//Osea te dice exactamente en que URL estas 
             )}>
               {/*Devuelve un componente <Link> para cada link
               
@@ -81,3 +81,34 @@ export default function NavLinks() {
     </>
   );
 }
+ 
+
+/*
+Qué es client-side navigation? (explicación definitiva)
+Imagina que tu aplicación es una casa.
+Moverte entre habitaciones sin salir de la casa = client-side navigation.
+- La app sigue abierta
+- Solo cambia el contenido dentro de ella
+- No se recarga todo
+El navegador NO hace una petición completa al servidor.
+Esto es lo que hace <Link>.
+*/
+
+/*
+¿Qué es clsx? (explicación más fácil)
+Imagina que tienes dos estilos:
+-Estilo normal
+-Estilo cuando está activo
+clsx te deja hacer esto:
+-Pon estos estilos siempre
+Y estos estilos solo cuando una condición sea verdadera
+Ejemplo:
+clsx(
+  "clases normales",
+  {
+    "clases activas": pathname === link.href
+  }
+)
+Te permite decir:
+“Si estoy en esta página, pinta el link azul”.
+*/
