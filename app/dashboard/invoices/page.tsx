@@ -3,13 +3,10 @@ import Pagination from '@/app/ui/invoices/pagination';
 
 import Search from '@/app/ui/search';
 // Nuestro componente de búsqueda (el que comentamos arriba)
-
 import Table from '@/app/ui/invoices/table';
 // Muestra la tabla de facturas (depende de la búsqueda y página)
-
 import { CreateInvoice } from '@/app/ui/invoices/buttons';
 // Botón para crear una factura nueva
-
 import { lusitana } from '@/app/ui/fonts';
 // Fuente personalizada
 
