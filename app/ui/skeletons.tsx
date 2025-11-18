@@ -1,4 +1,10 @@
 // Loading animation
+
+/*
+  Este archivo contiene componentes “placeholder” que se muestran mientras los datos reales cargan.
+  Se usan como fallback en Suspense.
+  Esto mejora la experiencia del usuario evitando ver una página vacía.
+*/
 const shimmer =
   'before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:bg-gradient-to-r before:from-transparent before:via-white/60 before:to-transparent';
 
