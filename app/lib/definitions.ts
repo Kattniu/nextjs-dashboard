@@ -2,6 +2,7 @@
 // It describes the shape of the data, and what data type each property should accept.
 // For simplicity of teaching, we're manually defining these types.
 // However, these types are generated automatically if you're using an ORM such as Prisma.
+// TYPES FOR USERS
 export type User = {
   id: string;
   name: string;
@@ -9,6 +10,7 @@ export type User = {
   password: string;
 };
 
+// TYPES FOR CUSTOMERS
 export type Customer = {
   id: string;
   name: string;
@@ -16,34 +18,29 @@ export type Customer = {
   image_url: string;
 };
 
+export type CustomerField = {
+  id: string;
+  name: string;
+};
+
+// TYPES FOR INVOICES
 export type Invoice = {
   id: string;
   customer_id: string;
-  amount: number;
-  date: string;
-  // In TypeScript, this is called a string union type.
-  // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
+  amount: number;   // stored in cents
+  date: string;     // "YYYY-MM-DD"
   status: 'pending' | 'paid';
 };
 
-export type Revenue = {
-  month: string;
-  revenue: number;
-};
-
-export type LatestInvoice = {
+// Type used to edit an invoice in the form
+export type InvoiceForm = {
   id: string;
-  name: string;
-  image_url: string;
-  email: string;
-  amount: string;
+  customer_id: string;
+  amount: number; // in cents
+  status: 'pending' | 'paid';
 };
 
-// The database returns a number for amount, but we later format it to a string with the formatCurrency function
-export type LatestInvoiceRaw = Omit<LatestInvoice, 'amount'> & {
-  amount: number;
-};
-
+// TYPES FOR TABLES & DASHBOARD
 export type InvoicesTable = {
   id: string;
   customer_id: string;
@@ -75,14 +72,20 @@ export type FormattedCustomersTable = {
   total_paid: string;
 };
 
-export type CustomerField = {
-  id: string;
-  name: string;
+// TYPES FOR REVENUE & LATEST INVOICES
+export type Revenue = {
+  month: string;
+  revenue: number;
 };
 
-export type InvoiceForm = {
+export type LatestInvoice = {
   id: string;
-  customer_id: string;
+  name: string;
+  image_url: string;
+  email: string;
+  amount: string;
+};
+
+export type LatestInvoiceRaw = Omit<LatestInvoice, 'amount'> & {
   amount: number;
-  status: 'pending' | 'paid';
 };

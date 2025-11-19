@@ -7,10 +7,33 @@ import {
   UserCircleIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
-
+import { createInvoice } from '@/app/lib/actions';
+/*import { createInvoice } from '@/app/lib/actions';
+✔ Esto conecta el formulario con la Server Action.
+✔ Cuando el usuario presione “Submit”, se ejecutará createInvoice(formData).
+✔ Ya no necesitas una API manual ni un fetch.
+*/
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
-    <form>
+    
+    <form action={createInvoice}>
+      {/* Cuando el usuario envíe el formulario, llama a la función createInvoice. 
+      Muy importante: lo que dice la nota final
+      Good to know: In HTML, you'd pass a URL to the action attribute.
+      En HTML tradicional:
+      <form action="/api/invoices" method="POST">
+      Pero en React (y Next.js):
+      <form action={createInvoice}>
+      Porque React extiende el comportamiento del atributo action.
+      💡 Lo que React hace “por detrás”:
+      Crea automáticamente un endpoint POST oculto.
+      Envía los datos del formulario a ese endpoint.
+      Ese endpoint ejecuta tu función createInvoice.
+      En otras palabras:
+      ✔ **No tienes que crear rutas /api/* manualmente.
+      La Server Action es tu API.**
+      */}
+
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
