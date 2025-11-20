@@ -1,3 +1,6 @@
+// /app/lib/data.ts
+// Funciones para consultar datos, como fetchInvoiceById() o fetchCustomers()
+
 // Importamos el cliente de PostgreSQL.
 // Esta librería permite conectarnos a la base de datos.
 import postgres from 'postgres';
@@ -212,7 +215,7 @@ export async function fetchInvoiceById(id: string) {
       ...invoice,
       amount: invoice.amount / 100,
     }));
-
+    console.log(invoice); // Invoice is an empty array []
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);
