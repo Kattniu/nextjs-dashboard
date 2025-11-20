@@ -11,16 +11,13 @@ en React Children significa : el contenido que va dentro del layout (las paginas
     return (
     <div className="flex h-screen flex-col md:flex-row md:overflow-hidden">
     {/*Esto crea un div (una caja en HTML)*/}
-1 div 
         {/* Barra lateral SideNav | digamos donde esta el menu*/}
         <div className="w-full flex-none md:w-64">
-         2 div  holaaaaaaaaaaaaaa
         <SideNav /> {/*Aqui se muestra el menu lateral*/} 
         </div>
 
         {/* Área donde se muestra el contenido de la página el contenido principal */}
         <div className="grow p-20 md:overflow-y-auto md:p-12">
-        hola soy un div, lo que pongas aqui saldra en las paginas hijos (Dsshboard, customers, invoices,etc)
         {children} {/*Aqui se mostrara la pagina actual(or ejemplo: Dashboard, Customers,etc)*/}
 
           </div>

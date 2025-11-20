@@ -6,6 +6,9 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import postgres from 'postgres';
 
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
+
 /*--------------------------------------
   Conexión a la base de datos
 ---------------------------------------*/
@@ -126,5 +129,26 @@ export async function deleteInvoice(id: string) {
     revalidatePath('/dashboard/invoices');
   } catch (error) {
     return { message: 'Database error: Failed to delete invoice.' };
+  }
+}
+
+
+//Esta acción debe importar la signInfunción de auth.ts:
+export async function authenticate(
+  prevState: string | undefined,
+  formData: FormData,
+) {
+  try {
+    await signIn('credentials', formData);
+  } catch (error) {
+    if (error instanceof AuthError) {
+      switch (error.type) {
+        case 'CredentialsSignin':
+          return 'Invalid credentials.';
+        default:
+          return 'Something went wrong.';
+      }
+    }
+    throw error;
   }
 }

@@ -2,6 +2,8 @@
 // Este archivo es OBLIGATORIO en toda ap de Next.js, es como el "esqueleto de tu aplicacion"
 import '@/app/ui/global.css';
 // Importo mis estilos globales (tailwind + css personalizado)
+import { Metadata } from 'next';
+// Importo el tipo Metadata de Next.js para definir metadatos de la app
 
 import { inter } from '@/app/ui/fonts';
 /* Importo la fuente Inter desde fonts.ts 
@@ -12,6 +14,20 @@ export const inter = Inter({ subsets: ['latin'] });
 Eso significa que estás descargando la fuente Inter desde Google Fonts,
 y Next.js la optimiza para que cargue rápido.
 */
+
+// Defino los metadatos globales de la app
+export const metadata: Metadata = {
+  title: {
+    template: '%s | Acme Dashboard',
+    default: 'Acme Dashboard',
+  },
+  description: 'The official Next.js Learn Dashboard built with App Router.',
+  metadataBase: new URL('https://next-learn-dashboard.vercel.sh'),
+};
+
+
+
+
 
 export default function RootLayout({ 
   children,

@@ -22,8 +22,18 @@ import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { fetchInvoicesPages } from '@/app/lib/data';
 // Función que obtiene cuántas páginas existen según la búsqueda actual
 
-// ---------------------------------------------
+import { Metadata } from 'next';
+// Importo el tipo Metadata de Next.js para definir metadatos de la página
 
+
+// ---------------------------------------------
+// Defino los metadatos específicos de esta página
+export const metadata: Metadata = {
+  title: 'Invoices',
+};
+
+//----------------------------------------------
+// Página principal de facturas
 export default async function Page(props: {searchParams?: Promise<{
     query?: string;
     page?: string;
